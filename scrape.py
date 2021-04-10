@@ -1,10 +1,7 @@
-import urllib.requests
-import matplotlib.pyplot as plt
-from PIL import Image
-from io import BytesIO
-subscription_key = "b28498cc-3f5e-4390-bca3-b5df6d58abed"
+import requests
+subscription_key = "9b6f4a0de7b8412797a9e9b8a4176c1a"
 search_url = "https://api.bing.microsoft.com/v7.0/images/search"
-search_term = "puppies"
+search_term = "World War One"
 
 headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
 
