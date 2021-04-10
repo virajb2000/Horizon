@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import {
     InfoContainer,
@@ -14,9 +14,18 @@ import {
     Img,
 } from './DemoElements';
 
+import { SpeechToText, test } from './audiostreaming'
+
 const DemoSection = ({id, topLine, headline, description, img, alt, nextMember}) => {
-    console.log('nextMember:')
-    console.log(nextMember)
+    const [recording, setRecording] = useState(false)
+    const [fromServer, setFromServer] = useState([])
+
+    function startRecording() {
+        setRecording(true)
+        SpeechToText()
+        setRecording(false)
+    }
+
     return (
         <>
             <InfoContainer id={id}>
@@ -28,6 +37,8 @@ const DemoSection = ({id, topLine, headline, description, img, alt, nextMember})
                                 <Subtitle>{description}</Subtitle>
                             </TextWrapper>
                     </InfoRow>
+                <button onClick={() => startRecording()}>Start Recording</button>
+                <p>{fromServer}</p>
                 </InfoWrapper>
             </InfoContainer>
         </>
