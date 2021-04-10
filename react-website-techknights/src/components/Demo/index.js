@@ -1,17 +1,16 @@
 import React, { useState } from 'react'
 
 import {
-    InfoContainer,
-    InfoWrapper,
-    InfoRow,
+    DemoContainer,
+    DemoWrapper,
+    DemoRow,
     Column1,
     Column2,
     TextWrapper,
     TopLine,
     Heading,
-    Subtitle,
-    ImgWrap,
-    Img,
+    ScrollList,
+    ScrollItem
 } from './DemoElements';
 
 import useSpeechToText from 'react-hook-speech-to-text';
@@ -20,15 +19,8 @@ import { SpeechToText, test } from './audiostreaming'
 import axios from 'axios';
 axios.default.defaults.baseURL = 'http://127.0.0.1:5000'
 
-const DemoSection = ({id, topLine, headline, description, img, alt, nextMember}) => {
-    const [recording, setRecording] = useState(false)
-    const [fromServer, setFromServer] = useState([])
-
-    function startRecording() {
-        setRecording(true)
-        SpeechToText()
-        setRecording(false)
-    }
+const DemoSection = ({ id, topLine, headline, description, img, alt, nextMember }) => {
+    const [imageList, setImageList] = useState([])
 
     const {
         error,
@@ -50,7 +42,7 @@ const DemoSection = ({id, topLine, headline, description, img, alt, nextMember})
             "token_uri": "https://oauth2.googleapis.com/token",
             "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
             "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/viraj-548%40myapp-310302.iam.gserviceaccount.com"
-          },
+        },
         timeout: 10000,
     });
 
@@ -58,45 +50,74 @@ const DemoSection = ({id, topLine, headline, description, img, alt, nextMember})
 
     return (
         <>
-            <InfoContainer id={id}>
-                <InfoWrapper>
-                    <InfoRow>
-                            <TextWrapper>
-                                <TopLine>{topLine}</TopLine>
-                                <Heading>{headline}</Heading>
-                                <Subtitle>{description}</Subtitle>
-                            </TextWrapper>
-                    </InfoRow>
-                    <div>
+            <DemoContainer id={id}>
+                <DemoWrapper>
+                    <DemoRow>
+                        <TextWrapper>
+                            <TopLine>{topLine}</TopLine>
+                            <Heading>{headline}</Heading>
+                        </TextWrapper>
+                    </DemoRow>
+                    <DemoRow>
+                        <Column1>
+                            <ScrollList>
+                                <ScrollItem>text</ScrollItem>
+                                <ScrollItem>text</ScrollItem>
+                                <ScrollItem>text</ScrollItem>
+                                <ScrollItem>text</ScrollItem>
+                                <ScrollItem>text</ScrollItem>
+                                <ScrollItem>text</ScrollItem>
+                                <ScrollItem>text</ScrollItem>
+                                <ScrollItem>text</ScrollItem>
+                                <ScrollItem>text</ScrollItem>
+                                <ScrollItem>text</ScrollItem>
+                                <ScrollItem>text</ScrollItem>
+                                <ScrollItem>text</ScrollItem>
+                                <ScrollItem>text</ScrollItem>
+                                <ScrollItem>text</ScrollItem>
+                                <ScrollItem>text</ScrollItem>   
+                                <ScrollItem>text</ScrollItem>
+                                <ScrollItem>text</ScrollItem>
+                                <ScrollItem>text</ScrollItem>
+                                <ScrollItem>text</ScrollItem>
+                                <ScrollItem>text</ScrollItem>
+                                <ScrollItem>text</ScrollItem>
+                            </ScrollList>
+                        </Column1>
+                        <Column2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                        </Column2>
+                    </DemoRow>
+
+                    {/* <DemoRow>
                         <h1>Recording: {isRecording.toString()}</h1>
+                    </DemoRow>
+                    <DemoRow>
                         <button onClick={isRecording ? stopSpeechToText : startSpeechToText}>
                             {isRecording ? 'Stop Recording' : 'Start Recording'}
                         </button>
-                        {/* <ul>
-                            {results.map((result, index) => (
-                                <li key={index}>{result}</li>
-                            ))}
-                        </ul> */}
+                    </DemoRow>
+                    <DemoRow>
                         <button onClick={() => {
-                            var data = JSON.stringify({ "msg": results[results.length-1] });
+                            var data = JSON.stringify({ "msg": results[results.length - 1] });
                             console.log(data)
                             var config = {
-                            method: 'get',
-                            url: 'http://127.0.0.1:5000/home',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            data: data
+                                method: 'get',
+                                url: 'http://127.0.0.1:5000/home',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                data: data
                             };
 
                             axios(config)
-                            .then(function (response) {
-                                console.log(response.data)
-                            })
+                                .then(function (response) {
+                                    console.log(response.data)
+                                })
                         }}>Get Results</button>
-                    </div>
-                </InfoWrapper>
-            </InfoContainer>
+                    </DemoRow> */}
+                </DemoWrapper>
+            </DemoContainer>
         </>
     )
 }

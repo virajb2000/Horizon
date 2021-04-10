@@ -12,4 +12,4 @@ response.raise_for_status()
 search_results = response.json()
 thumbnail_urls = [img["thumbnailUrl"] for img in search_results["value"][:16]]
 
-print(thumbnail_urls)
+return thumbnail_urls[0]
