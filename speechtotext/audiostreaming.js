@@ -1,7 +1,11 @@
+process.env.GOOGLE_APPLICATION_CREDENTIALS = "myapp-310302-7fcfe25d1a82.json"
 const recorder = require('node-record-lpcm16');
 
 // Imports the Google Cloud client library
 const speech = require('@google-cloud/speech');
+
+const axios = require('axios')
+axios.default.defaults.baseURL = 'http://127.0.0.1:5000'
 
 // Creates a client
 const client = new speech.SpeechClient();
@@ -23,26 +27,38 @@ const request = {
     sampleRateHertz: sampleRateHertz,
     languageCode: languageCode,
   },
-  interimResults: true, // If you want interim results, set this to true
-  singleUtterance: true,
-  silenceThreshold: 20000
+  interimResults: false, // If you want interim results, set this to true
+  singleUtterance: false,
+  // silenceThreshold: 20000
 };
 
 // Create a recognize stream
 const recognizeStream = client
-.streamingRecognize(request)
-.on('error', console.error)
-.on('data', data =>{
-process.stdout.write(
-  data.results[0] && data.results[0].alternatives[0]
-  ? `Transcription: ${data.results[0].alternatives[0].transcript}\n`
-  : '\n\nReached transcription time limit, press Ctrl+C\n'
-  )}
-  );
+  .streamingRecognize(request)
+  .on('error', console.error)
+  .on('data', data => {
+    if (data.results[0] && data.results[0].alternatives[0]) {
+      var data = JSON.stringify({ "msg": data.results[0].alternatives[0].transcript });
 
-  // Start recording and send the microphone input to the Speech API.
-  // Ensure SoX is installed, see https://www.npmjs.com/package/node-record-lpcm16#dependencies
-  recorder
+      var config = {
+        method: 'get',
+        url: 'http://127.0.0.1:5000/home',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: data
+      };
+
+      axios(config)
+        .then(function (response) {
+          console.log(response.data)
+        })
+    }
+  });
+
+// Start recording and send the microphone input to the Speech API.
+// Ensure SoX is installed, see https://www.npmjs.com/package/node-record-lpcm16#dependencies
+recorder
   .record({
     sampleRateHertz: sampleRateHertz,
     threshold: 0,
@@ -53,5 +69,5 @@ process.stdout.write(
   .stream()
   .on('error', console.error)
   .pipe(recognizeStream);
-  
-  console.log('Listening, press Ctrl+C to stop.');
+
+console.log('Listening, press Ctrl+C to stop.');
