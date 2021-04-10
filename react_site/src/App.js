@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import Welcome from './components/speechtotext'
 import WorldCloud from './components/wordcloud'
+import Dictaphone from './components/speechrecognition'
+
 
 function App() {
   return (
@@ -9,6 +11,7 @@ function App() {
 
       <h1>Welcome to BitCamp101</h1>
       <Welcome />
+      <Dictaphone />
       <div>
         <p>hi</p>
       </div>

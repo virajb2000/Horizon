@@ -7,7 +7,7 @@ import 'tippy.js/animations/scale.css';
 const callbacks = {
     getWordColor: word => word.value > 30 ? "red" : (word.value > 15 ? "orange" : "white"),
     // getWordColor: word => word.value < 190 ? "green" : "red",
-    onWordClick: word => alert("Arjun you sexy motherfucker"),
+    // onWordClick: word => alert(""),
     // onWordMouseOver: console.log,
     getWordTooltip: word => `${word.text} appeared ${word.value} times during class`,
 }
