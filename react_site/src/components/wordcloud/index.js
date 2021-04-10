@@ -5,11 +5,11 @@ import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/scale.css';
 
 const callbacks = {
-    getWordColor: word => word.value > 290 ? "blue" : "red",
-    getWordColor: word => word.value < 190 ? "green" : "red",
-    onWordClick: console.log,
-    onWordMouseOver: console.log,
-    getWordTooltip: word => `${word.text} (${word.value}) [${word.value > 50 ? "good" : "bad"}]`,
+    getWordColor: word => word.value > 30 ? "red" : (word.value > 15 ? "orange" : "white"),
+    // getWordColor: word => word.value < 190 ? "green" : "red",
+    onWordClick: word => alert("Arjun you sexy motherfucker"),
+    // onWordMouseOver: console.log,
+    getWordTooltip: word => `${word.text} appeared ${word.value} times during class`,
 }
 const options = {
     rotations: 4,
@@ -20,7 +20,7 @@ let words = [
 ]
 
 var i;
-for (i = 0; i < 300; i++) {
+for (i = 0; i < 40; i++) {
   words.push({text: i, value: i})
 }
 
