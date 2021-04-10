@@ -1,6 +1,6 @@
 export const demo = {
     id: 'demo',
-    topLine: 'Demo',
-    headline: '',
-    description: '',
+    topLine: 'Demonstration',
+    headline: 'Placeholder',
+    description: 'some text here for now because we can fill this in later',
 }
