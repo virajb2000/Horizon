@@ -28,25 +28,22 @@ const Navbar = ({ toggle }) => {
         <>
             <Nav scrollNav={scrollNav}>
                 <NavbarContainer>
-                    <NavLogo to='/'>16606</NavLogo>
+                    <NavLogo to='/'>Placeholder</NavLogo>
                     <MobileIcon onClick={toggle}>
                         <FaBars />
                     </MobileIcon>
                     <NavMenu>
                         <NavItem>
-                            <NavLinks to="about" smooth={true} duration={500} spy={true} exact='true' offset={-80}>About Us</NavLinks>
+                            <NavLinks to="problem" smooth={true} duration={500} spy={true} exact='true' offset={-80}>The Problem</NavLinks>
                         </NavItem>
                         <NavItem>
-                            <NavLinks to="meet" smooth={true} duration={500} spy={true} exact='true' offset={-80}>Meet the Team</NavLinks>
+                            <NavLinks to="whatis" smooth={true} duration={500} spy={true} exact='true' offset={-80}>What is Placeholder</NavLinks>
                         </NavItem>
                         <NavItem>
-                            <NavLinks to="robot" smooth={true} duration={500} spy={true} exact='true' offset={-80}>Our Robot</NavLinks>
+                            <NavLinks to="action" smooth={true} duration={500} spy={true} exact='true' offset={-80}>Placeholder in Action</NavLinks>
                         </NavItem>
                         <NavItem>
-                            <NavLinks to="pictures" smooth={true} duration={500} spy={true} exact='true' offset={-80}>Pictures</NavLinks>
-                        </NavItem>
-                        <NavItem>
-                            <NavLinks to="sponsors" smooth={true} duration={500} spy={true} exact='true' offset={-80}>Sponsors</NavLinks>
+                            <NavLinks to="hood" smooth={true} duration={500} spy={true} exact='true' offset={-80}>Placeholder Under the Hood</NavLinks>
                         </NavItem>
                     </NavMenu>
                     {/* <NavBtn>

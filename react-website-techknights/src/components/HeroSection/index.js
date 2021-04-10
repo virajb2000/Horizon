@@ -27,9 +27,9 @@ const HeroSection = () => {
 
             </HeroBg>
             <HeroContent>
-                <HeroH1>Home of the Tech Knights</HeroH1>
+                <HeroH1>Placeholder</HeroH1>
                 <HeroP>
-                    FTC Team 16606
+                    Presented at Bitcamp 2021
                 </HeroP>
                 <HeroBtnWrapper>
                     <Button to="about" onMouseEnter={onHover} onMouseLeave={onHover} primary='true' dark='true' smooth={true} duration={500} spy={true} exact='true' offset={-80}>

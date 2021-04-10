@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar'
 import HeroSection from '../components/HeroSection'
 import InfoSection from '../components/InfoSection'
 import MeetSection from '../components/MeetSection'
-import { homeObjOne, robot, sponsors } from '../components/InfoSection/Data'
+import { homeObjOne, whatis, hood, temp, placeholder, sponsors } from '../components/InfoSection/Data'
 import Homee  from '../components/DaPics'
 import { ThemeAndColors } from '../components/DaPics/Data'
 
@@ -64,13 +64,16 @@ const Home = () => {
             <Navbar toggle={toggle} /> 
             <HeroSection />
             <InfoSection {...homeObjOne}/>
-            <MeetSection />
-            <InfoSection {...robot}/>
+            <InfoSection {...whatis}/>
+            {/* <InfoSection {...temp}/> */}
+            <InfoSection {...hood}/>
+            {/* <MeetSection /> */}
+            {/* <InfoSection {...placeholder}/> */}
             {/* <InfoSection {...BuildSeason}/> */}
             {/* <ImageGallery {...homeObjOneImageGallery} /> */}
             {/* <DaPics/> */}
-            <Homee {...ThemeAndColors}/>
-            <InfoSection {...sponsors}/>
+            {/* <Homee {...ThemeAndColors}/> */}
+            {/* <InfoSection {...sponsors}/> */}
             {/* <ResponsiveGallery images={images} useLightBox={true}/> */}
             {/* <MeetSections/> */}
         </>
