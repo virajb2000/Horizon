@@ -32,46 +32,11 @@ export const whatis = {
     darkText: true
 }
 
-export const hood = {
-    id: 'hood',
-    lightBg: true,
-    lightText: false,
-    lightTextDesc: false,
-    topLine: 'How Placeholder was Implemented',
-    headline: 'NLP meets Image Processing',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
-    buttonLabel: 'Getting started',
-    imgStart: false,
-    img: [require('../../images/tech.svg').default],
-    alt: 'Car',
-    dark: false,
-    primary: false,
-    darkText: true
-}
-
-
-export const temp = {
-    id: 'action',
+export const placeholder = {
+    id: 'placeholder',
     lightBg: false,
     lightText: true,
     lightTextDesc: true,
-    topLine: 'Penis',
-    headline: 'Penis',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
-    buttonLabel: 'Getting started',
-    imgStart: false,
-    img: [require('../../images/tech.svg').default],
-    alt: 'Car',
-    dark: true,
-    primary: true,
-    darkText: false
-}
-
-export const placeholder = {
-    id: 'placeholder',
-    lightBg: true,
-    lightText: false,
-    lightTextDesc: false,
     topLine: 'Our Product',
     headline: 'Meet Placeholder',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
@@ -84,24 +49,36 @@ export const placeholder = {
     darkText: true
 }
 
-export const sponsors = {
-    id: 'sponsors',
+export const hood = {
+    id: 'hood',
     lightBg: false,
     lightText: true,
     lightTextDesc: true,
-    topLine: 'Sponsors',
-    headline: 'Our Sincerest Gratitude',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    topLine: 'How Placeholder was Implemented',
+    headline: 'NLP meets Image Processing',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
     buttonLabel: 'Getting started',
     imgStart: false,
-    img: [
-        require('../../images/lockheed.png').default,
-        require('../../images/c1.png').default,
-        require('../../images/merck.png').default
-    ],
+    img: [require('../../images/tech.svg').default],
     alt: 'Car',
     dark: true,
     primary: true,
     darkText: false
 }
 
+export const future = {
+    id: 'future',
+    lightBg: true,
+    lightText: false,
+    lightTextDesc: false,
+    topLine: 'Future Changes',
+    headline: 'Future stuff',
+    description: 'non-latin description here.',
+    buttonLabel: 'Getting started',
+    imgStart: false,
+    img: [require('../../images/valor_cad_full.png').default],
+    alt: 'Car',
+    dark: false,
+    primary: false,
+    darkText: true
+}

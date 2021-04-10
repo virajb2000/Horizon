@@ -34,10 +34,6 @@ const InfoSection = ({lightBg, id, imgStart, topLine, lightText, headline, darkT
                                 <Heading lightText={lightText}>{headline}</Heading>
                                 <Subtitle darkText={darkText}>{description}</Subtitle>
                             </TextWrapper>
-                            {/* <IconWrap>
-                                <AccessAlarm fontSize='large' color="primary"/>
-                            </IconWrap> */}
-                            {/* <BtnWrap>{<Plus1/>}{'2019 - 2020 was our very first year competing in FIRST Tech Challenge in Skystone'}</BtnWrap> */}
                         </Column1>
                         <Column2>
                         <ImgWrap>

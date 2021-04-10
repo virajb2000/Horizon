@@ -40,10 +40,13 @@ const Navbar = ({ toggle }) => {
                             <NavLinks to="whatis" smooth={true} duration={500} spy={true} exact='true' offset={-80}>What is Placeholder</NavLinks>
                         </NavItem>
                         <NavItem>
-                            <NavLinks to="action" smooth={true} duration={500} spy={true} exact='true' offset={-80}>Placeholder in Action</NavLinks>
+                            <NavLinks to="placeholder" smooth={true} duration={500} spy={true} exact='true' offset={-80}>Placeholder in Action</NavLinks>
                         </NavItem>
                         <NavItem>
                             <NavLinks to="hood" smooth={true} duration={500} spy={true} exact='true' offset={-80}>Placeholder Under the Hood</NavLinks>
+                        </NavItem>
+                        <NavItem>
+                            <NavLinks to="future" smooth={true} duration={500} spy={true} exact='true' offset={-80}>Future Changes</NavLinks>
                         </NavItem>
                     </NavMenu>
                     {/* <NavBtn>
