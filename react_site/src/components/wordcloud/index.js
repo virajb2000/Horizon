@@ -5,7 +5,8 @@ import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/scale.css';
 
 const callbacks = {
-    getWordColor: word => word.value > 50 ? "blue" : "red",
+    getWordColor: word => word.value > 290 ? "blue" : "red",
+    getWordColor: word => word.value < 190 ? "green" : "red",
     onWordClick: console.log,
     onWordMouseOver: console.log,
     getWordTooltip: word => `${word.text} (${word.value}) [${word.value > 50 ? "good" : "bad"}]`,
@@ -16,8 +17,13 @@ const options = {
 };
 let size = [600, 400];
 let words = [
-    {text: 'told', value: 64}
 ]
+
+var i;
+for (i = 0; i < 300; i++) {
+  words.push({text: i, value: i})
+}
+
 
 
 

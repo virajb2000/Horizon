@@ -6,7 +6,16 @@ import WorldCloud from './components/wordcloud'
 function App() {
   return (
     <div className="App">
+      <h1>Welcome to BitCamp101</h1>
       <Welcome/>
+      <div class="container">
+        <div class="left">
+
+        </div>
+        <div class="right">
+
+        </div>
+      </div>
       <WorldCloud/>
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
