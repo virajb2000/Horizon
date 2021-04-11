@@ -56,7 +56,7 @@ const DemoSection = ({ id, topLine, headline, description, img, alt, nextMember 
             if (results.length > 0) {
                 var options = {
                     'method': 'GET',
-                    'url': 'http://127.0.0.1:5000/entity?msg=' + results[results.length - 1],
+                    'url': 'https://1cfea706b2ba.ngrok.io/entity?msg=' + results[results.length - 1],
                     'headers': {
                         'Content-Type': 'application/json',
                         'Access-Control-Allow-Origin': '*'
