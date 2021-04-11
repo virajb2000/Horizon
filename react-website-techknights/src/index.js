@@ -11,9 +11,13 @@ ReactDOM.render(
 
 var scrolled = false;
 function updateScroll() {
-  if (!scrolled) {
-    var element = document.getElementById("scroll_list");
-    element.scrollTop = element.scrollHeight;
+  try {
+    if (!scrolled) {
+      var element = document.getElementById("scroll_list");
+      element.scrollTop = element.scrollHeight;
+    }
+  } catch (error) {
+    console.log(error)
   }
 }
 

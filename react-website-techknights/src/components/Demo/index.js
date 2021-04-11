@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
-// import ReactWordcloud from 'react-wordcloud'
 import useSpeechToText from 'react-hook-speech-to-text';
-import WordCloud from './wc';
+import ReactWordcloud from 'react-wordcloud';
 
 import {
     DemoContainer,
@@ -13,17 +12,17 @@ import {
     TopLine,
     Heading,
     ScrollItem,
-    ScrollList
+    ScrollList,
+    ScrollCSS,
+    RowC
 } from './DemoElements';
-
 
 var request = require('request');
 
-//{img_url: 'imageurl 1'}, {img_url: 'imageurl 2'}, {img_url: 'imageurl 3'}, {img_url: 'imageurl 4'}, {img_url: 'imageurl 5'}, {img_url: 'imageurl 6'}, {img_url: 'imageurl 7'}, {img_url: 'imageurl 8'}, {img_url: 'imageurl 9'},{img_url: 'imageurl 10'}, {img_url: 'imageurl 11'}, {img_url: 'imageurl 12'}, {img_url: 'imageurl 13'}, {img_url: 'imageurl 14'},{img_url: 'imageurl 15'},{img_url: 'imageurl 16'}, {img_url: 'imageurl 17'}, {img_url: 'imageurl 18'}, {img_url: 'imageurl 19'}, {img_url: 'imageurl 20'}
+
 const DemoSection = ({ id, topLine, headline, description, img, alt, nextMember }) => {
     const [imageList, setImageList] = useState([])
-    const [globalList, setGlobalList] = useState(new Set())
-    const [fetching, setFetching] = useState(false)
+    const [globalList, setGlobalList] = useState([])
 
     const {
         error,
@@ -63,49 +62,69 @@ const DemoSection = ({ id, topLine, headline, description, img, alt, nextMember 
                     },
 
                 };
-                console.log(results)
-                request(options, function (error, response) {
-                    if (error) throw new Error(error);
-                    imageList.push(JSON.parse(response.body).image_url)
-                    let tempList = imageList.slice()
-                    setImageList(tempList)
 
-                    Array.from(JSON.parse(response.body).word_list).map(item => {
-                        if (!(item in globalList)) {
-                            globalList.add({ item: 1 })
-                        } else {
-                            var count = globalList[item] + 1
-                            globalList.add({ item: count })
-                        }
-                        let tempList = new Set(globalList)
-                        setGlobalList(tempList)
-                    })
-                });
+                try {
+                    request(options, function (error, response) {
+                        if (error) throw new Error(error);
+                        imageList.push(JSON.parse(response.body).image_url)
+                        let tempList = imageList.slice()
+                        setImageList(tempList)
+
+                        Array.from(JSON.parse(response.body).word_list).map(item => {
+                            globalList.push({text: item, value: 1})
+                            let tempList = globalList.slice()
+                            setGlobalList(tempList)
+                        })
+                    });
+                } catch (error) {
+                    console.log(error)
+                }
             }
         }
+
         try {
-            setFetching(true)
             f()
         } catch (error) {
             console.log(error)
-        } finally {
-            setFetching(false)
         }
     }, [results]);
 
+    const colors = ["blue", "red", "yellow", "green", "orange"]
+
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+    }
+
+    const callbacks = {
+        getWordColor: () => colors[getRandomInt(colors.length)],
+        onWordClick: console.log,
+        onWordMouseOver: console.log,
+        getWordTooltip: word => `${word.text} (${word.value}) [${word.value > 50 ? "good" : "bad"}]`,
+    }
+
+    const options = {
+        rotations: 2,
+        rotationAngles: [-90, 0],
+    };
+
+    const size = [800, 600];
+
     return (
         <>
-            <DemoContainer id={id}>
-                <DemoWrapper>
-                    <DemoRow>
-                        <TextWrapper>
-                            <TopLine>{topLine}</TopLine>
-                            <Heading>{headline}</Heading>
-                        </TextWrapper>
-                    </DemoRow>
-                    <DemoRow>
+        <DemoContainer id={id}>
+            <DemoWrapper>
+                <DemoRow>
+                    <TextWrapper>
+                        <TopLine>{topLine}</TopLine>
+                        <Heading>{headline}</Heading>
+                        {results.length == 0 && <Heading>Please Wait for the Lecture to Begin</Heading>}
+                    </TextWrapper>
+                </DemoRow>
+                <DemoRow>
+                    <RowC>
                         <Column1>
-                            <ScrollList id="scroll_list">
+                            
+                            {results.length > 0 && <ScrollList id="scroll_list">
                                 {Array.from(imageList).map((item, index) => {
                                     return (
                                         <ScrollItem key={index}>
@@ -113,21 +132,32 @@ const DemoSection = ({ id, topLine, headline, description, img, alt, nextMember 
                                         </ScrollItem>
                                     );
                                 })}
-                            </ScrollList>
+                            </ScrollList>}
+                            
+                            <RowC>
+                                {/* <Column1> */}
+                                    <smalltext>{isRecording ? 'Recording' : 'Not Recording'}</smalltext>
+                                {/* </Column1> */}
+                                {/* <Column2> */}
+                                    <button onClick={isRecording ? stopSpeechToText : startSpeechToText}>
+                                        {isRecording ? 'Stop Recording' : 'Start Recording'}
+                                    </button>
+                                {/* </Column2> */}
+                            </RowC>
                         </Column1>
-                        <Column2 id="word_cloud">
-                            <WordCloud words={globalList}/>
-                        </Column2>
-                    </DemoRow>
-                    <h1>Recording: {isRecording.toString()}</h1>
-                    <button onClick={isRecording ? stopSpeechToText : startSpeechToText}>
-                        {isRecording ? 'Stop Recording' : 'Start Recording'}
-                    </button>
-                    <DemoRow>
-                    </DemoRow>
-                </DemoWrapper>
-            </DemoContainer>
-        </>
+                        {/* <ReactWordcloud words={globalList} /> */}
+                        <ReactWordcloud
+                            callbacks={callbacks}
+                            options={options}
+                            size={size}
+                            words={globalList}
+                        />
+                    </RowC>
+
+                </DemoRow>
+            </DemoWrapper>
+        </DemoContainer>
+    </>
     )
 }
 
