@@ -103,13 +103,14 @@ export const Img = styled.img`
 `
 
 export const ScrollList = styled.ul`
-    height: 20em;
+    height: 40em;
     line-height: 2em;
     overflow-y: scroll;
     ::-webkit-scrollbar {
         width: 0px;
         background: transparent; /* make scrollbar transparent */
     }
+    scroll-behavior: smooth;
 `
 
 export const ScrollItem = styled.li`

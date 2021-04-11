@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import {
     DemoContainer,
@@ -21,6 +21,12 @@ var request = require('request');
 //{img_url: 'imageurl 1'}, {img_url: 'imageurl 2'}, {img_url: 'imageurl 3'}, {img_url: 'imageurl 4'}, {img_url: 'imageurl 5'}, {img_url: 'imageurl 6'}, {img_url: 'imageurl 7'}, {img_url: 'imageurl 8'}, {img_url: 'imageurl 9'},{img_url: 'imageurl 10'}, {img_url: 'imageurl 11'}, {img_url: 'imageurl 12'}, {img_url: 'imageurl 13'}, {img_url: 'imageurl 14'},{img_url: 'imageurl 15'},{img_url: 'imageurl 16'}, {img_url: 'imageurl 17'}, {img_url: 'imageurl 18'}, {img_url: 'imageurl 19'}, {img_url: 'imageurl 20'}
 const DemoSection = ({ id, topLine, headline, description, img, alt, nextMember }) => {
     const [imageList, setImageList] = useState([])
+
+    useEffect(() => {
+        var element = document.getElementById("scroll_list");
+        element.scrollTop = element.scrollHeight;
+    });
+    // const [wordCloud, setWordCloud] = useState([])
 
     const {
         error,
@@ -60,18 +66,18 @@ const DemoSection = ({ id, topLine, headline, description, img, alt, nextMember 
                     </DemoRow>
                     <DemoRow>
                         <Column1>
-                        <ScrollList>
-                            {Array.from(imageList).map(item => {
-                            return (
-                                <ScrollItem key={item}>
-                                    <img src={item}/>
-                                </ScrollItem>
-                            );
-                            })}
-                        </ScrollList>
+                            <ScrollList id="scroll_list">
+                                {Array.from(imageList).map(item => {
+                                    return (
+                                        <ScrollItem key={item}>
+                                            <img src={item} />
+                                        </ScrollItem>
+                                    );
+                                })}
+                            </ScrollList>
                         </Column1>
                         <Column2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                                
                         </Column2>
                     </DemoRow>
 
@@ -87,20 +93,21 @@ const DemoSection = ({ id, topLine, headline, description, img, alt, nextMember 
                         <button onClick={() => {
                             var options = {
                                 'method': 'GET',
-                                'url': 'http://127.0.0.1:5000/entity?msg='+results[results.length - 1],
+                                'url': 'http://127.0.0.1:5000/entity?msg=' + results[results.length - 1],
                                 'headers': {
-                                  'Content-Type': 'application/json',
-                                  'Access-Control-Allow-Origin': '*'
+                                    'Content-Type': 'application/json',
+                                    'Access-Control-Allow-Origin': '*'
                                 },
-                              
+
                             };
 
                             request(options, function (error, response) {
                                 if (error) throw new Error(error);
                                 imageList.push(JSON.parse(response.body).image_url)
                                 setImageList(imageList)
+                                
                             });
-                            
+
                         }}>Get Results</button>
                     </DemoRow>
                 </DemoWrapper>

@@ -9,4 +9,12 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
+var scrolled = false;
+function updateScroll() {
+  if (!scrolled) {
+    var element = document.getElementById("scroll_list");
+    element.scrollTop = element.scrollHeight;
+  }
+}
 
+setInterval(updateScroll, 10);
