@@ -9,16 +9,13 @@ import {
     TextWrapper,
     TopLine,
     Heading,
-    ScrollList,
-    ScrollItem
 } from './DemoElements';
 
 import useSpeechToText from 'react-hook-speech-to-text';
 
-import { SpeechToText, test } from './audiostreaming'
 import axios from 'axios';
-axios.default.defaults.baseURL = 'http://127.0.0.1:5000'
 
+//{img_url: 'imageurl 1'}, {img_url: 'imageurl 2'}, {img_url: 'imageurl 3'}, {img_url: 'imageurl 4'}, {img_url: 'imageurl 5'}, {img_url: 'imageurl 6'}, {img_url: 'imageurl 7'}, {img_url: 'imageurl 8'}, {img_url: 'imageurl 9'},{img_url: 'imageurl 10'}, {img_url: 'imageurl 11'}, {img_url: 'imageurl 12'}, {img_url: 'imageurl 13'}, {img_url: 'imageurl 14'},{img_url: 'imageurl 15'},{img_url: 'imageurl 16'}, {img_url: 'imageurl 17'}, {img_url: 'imageurl 18'}, {img_url: 'imageurl 19'}, {img_url: 'imageurl 20'}
 const DemoSection = ({ id, topLine, headline, description, img, alt, nextMember }) => {
     const [imageList, setImageList] = useState([])
 
@@ -60,36 +57,27 @@ const DemoSection = ({ id, topLine, headline, description, img, alt, nextMember 
                     </DemoRow>
                     <DemoRow>
                         <Column1>
-                            <ScrollList>
-                                <ScrollItem>text</ScrollItem>
-                                <ScrollItem>text</ScrollItem>
-                                <ScrollItem>text</ScrollItem>
-                                <ScrollItem>text</ScrollItem>
-                                <ScrollItem>text</ScrollItem>
-                                <ScrollItem>text</ScrollItem>
-                                <ScrollItem>text</ScrollItem>
-                                <ScrollItem>text</ScrollItem>
-                                <ScrollItem>text</ScrollItem>
-                                <ScrollItem>text</ScrollItem>
-                                <ScrollItem>text</ScrollItem>
-                                <ScrollItem>text</ScrollItem>
-                                <ScrollItem>text</ScrollItem>
-                                <ScrollItem>text</ScrollItem>
-                                <ScrollItem>text</ScrollItem>   
-                                <ScrollItem>text</ScrollItem>
-                                <ScrollItem>text</ScrollItem>
-                                <ScrollItem>text</ScrollItem>
-                                <ScrollItem>text</ScrollItem>
-                                <ScrollItem>text</ScrollItem>
-                                <ScrollItem>text</ScrollItem>
-                            </ScrollList>
+                        <nav>
+                        <ul 
+                        style={{height: '200px', overflow: 'scroll'}}>
+                            {imageList.map(item => {
+                            return (
+                                <li
+                                key={item.id}
+                                style={{ height: '25px'}}>
+                                    <div>{item.img_url}</div>
+                                </li>
+                            );
+                            })}
+                        </ul>
+                        </nav>
                         </Column1>
                         <Column2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
                         </Column2>
                     </DemoRow>
 
-                    {/* <DemoRow>
+                    <DemoRow>
                         <h1>Recording: {isRecording.toString()}</h1>
                     </DemoRow>
                     <DemoRow>
@@ -99,23 +87,27 @@ const DemoSection = ({ id, topLine, headline, description, img, alt, nextMember 
                     </DemoRow>
                     <DemoRow>
                         <button onClick={() => {
-                            var data = JSON.stringify({ "msg": results[results.length - 1] });
-                            console.log(data)
+                            var speech = JSON.stringify({ "msg": results[results.length - 1] });
+                            console.log(speech)
                             var config = {
-                                method: 'get',
-                                url: 'http://127.0.0.1:5000/home',
-                                headers: {
-                                    'Content-Type': 'application/json'
-                                },
-                                data: data
+                            method: 'get',
+                            url: 'http://127.0.0.1:5000/entity',
+                            headers: { 
+                                'Content-Type': 'application/json'
+                            },
+                            data : speech
                             };
 
                             axios(config)
-                                .then(function (response) {
-                                    console.log(response.data)
-                                })
+                            .then(function (response) {
+                                setImageList(imageList.push(response.data.image_url))
+                            })
+                            .catch(function (error) {
+                                console.log(error);
+                            });
+
                         }}>Get Results</button>
-                    </DemoRow> */}
+                    </DemoRow>
                 </DemoWrapper>
             </DemoContainer>
         </>
