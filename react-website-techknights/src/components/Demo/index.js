@@ -94,12 +94,11 @@ const DemoSection = ({ id, topLine, headline, description, img, alt, nextMember 
 
                             var options = {
                                 'method': 'GET',
-                                'url': 'http://127.0.0.1:5000/entity?msg=computer',
+                                'url': 'http://127.0.0.1:5000/entity?msg='+results[results.length - 1],
                                 'headers': {
                                   'Content-Type': 'application/json',
                                   'Access-Control-Allow-Origin': '*'
                                 },
-                                // body: JSON.stringify({"msg":"computer science is one of the most fascinating areas of study in the twenty first century"})
                               
                             };
 
