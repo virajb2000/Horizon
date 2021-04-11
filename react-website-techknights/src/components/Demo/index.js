@@ -55,7 +55,7 @@ const DemoSection = ({ id, topLine, headline, description, img, alt, nextMember 
             if (results.length > 0) {
                 var options = {
                     'method': 'GET',
-                    'url': 'http://127.0.0.1:5000/entity?msg=' + results[results.length - 1],
+                    'url': 'https://1cfea706b2ba.ngrok.io/entity?msg=' + results[results.length - 1],
                     'headers': {
                         'Content-Type': 'application/json',
                         'Access-Control-Allow-Origin': '*'
@@ -89,7 +89,7 @@ const DemoSection = ({ id, topLine, headline, description, img, alt, nextMember 
         }
     }, [results]);
 
-    const colors = ["blue", "red", "yellow", "green", "orange"]
+    const colors = ["#6363FF", "#63ff85", "#ffdf63", "#63ffde", "#ffa263"]
 
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
