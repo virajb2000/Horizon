@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react'
+// import ReactWordcloud from 'react-wordcloud'
+import useSpeechToText from 'react-hook-speech-to-text';
+import WordCloud from './wc';
 
 import {
     DemoContainer,
@@ -13,7 +16,6 @@ import {
     ScrollList
 } from './DemoElements';
 
-import useSpeechToText from 'react-hook-speech-to-text';
 
 var request = require('request');
 
@@ -21,11 +23,7 @@ var request = require('request');
 const DemoSection = ({ id, topLine, headline, description, img, alt, nextMember }) => {
     const [imageList, setImageList] = useState([])
     const [globalList, setGlobalList] = useState(new Set())
-
-    useEffect(() => {
-        var element = document.getElementById("scroll_list");
-        element.scrollTop = element.scrollHeight;
-    });
+    const [fetching, setFetching] = useState(false)
 
     const {
         error,
@@ -51,7 +49,49 @@ const DemoSection = ({ id, topLine, headline, description, img, alt, nextMember 
         timeout: 10000,
     });
 
-    if (error) return <p>Web Speech API is not available in this browser 🤷‍</p>;
+    // if (error) return <p>Web Speech API is not available in this browser 🤷‍</p>;
+
+    useEffect(() => {
+        function f() {
+            if (results.length > 0) {
+                var options = {
+                    'method': 'GET',
+                    'url': 'http://127.0.0.1:5000/entity?msg=' + results[results.length - 1],
+                    'headers': {
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': '*'
+                    },
+
+                };
+                console.log(results)
+                request(options, function (error, response) {
+                    if (error) throw new Error(error);
+                    imageList.push(JSON.parse(response.body).image_url)
+                    let tempList = imageList.slice()
+                    setImageList(tempList)
+
+                    Array.from(JSON.parse(response.body).word_list).map(item => {
+                        if (!(item in globalList)) {
+                            globalList.add({ item: 1 })
+                        } else {
+                            var count = globalList[item] + 1
+                            globalList.add({ item: count })
+                        }
+                        let tempList = new Set(globalList)
+                        setGlobalList(tempList)
+                    })
+                });
+            }
+        }
+        try {
+            setFetching(true)
+            f()
+        } catch (error) {
+            console.log(error)
+        } finally {
+            setFetching(false)
+        }
+    }, [results]);
 
     return (
         <>
@@ -66,9 +106,9 @@ const DemoSection = ({ id, topLine, headline, description, img, alt, nextMember 
                     <DemoRow>
                         <Column1>
                             <ScrollList id="scroll_list">
-                                {Array.from(imageList).map(item => {
+                                {Array.from(imageList).map((item, index) => {
                                     return (
-                                        <ScrollItem key={item}>
+                                        <ScrollItem key={index}>
                                             <img src={item} />
                                         </ScrollItem>
                                     );
@@ -76,49 +116,14 @@ const DemoSection = ({ id, topLine, headline, description, img, alt, nextMember 
                             </ScrollList>
                         </Column1>
                         <Column2 id="word_cloud">
-                            <p>hi</p>
+                            <WordCloud words={globalList}/>
                         </Column2>
                     </DemoRow>
-
+                    <h1>Recording: {isRecording.toString()}</h1>
+                    <button onClick={isRecording ? stopSpeechToText : startSpeechToText}>
+                        {isRecording ? 'Stop Recording' : 'Start Recording'}
+                    </button>
                     <DemoRow>
-                        <h1>Recording: {isRecording.toString()}</h1>
-                    </DemoRow>
-                    <DemoRow>
-                        <button onClick={isRecording ? stopSpeechToText : startSpeechToText}>
-                            {isRecording ? 'Stop Recording' : 'Start Recording'}
-                        </button>
-                    </DemoRow>
-                    <DemoRow>
-                        <button onClick={() => {
-                            var options = {
-                                'method': 'GET',
-                                'url': 'http://127.0.0.1:5000/entity?msg=' + results[results.length - 1],
-                                'headers': {
-                                    'Content-Type': 'application/json',
-                                    'Access-Control-Allow-Origin': '*'
-                                },
-
-                            };
-
-                            request(options, function (error, response) {
-                                if (error) throw new Error(error);
-                                imageList.push(JSON.parse(response.body).image_url)
-                                let tempList = imageList.slice()
-                                setImageList(tempList)
-
-                                Array.from(JSON.parse(response.body).word_list).map(item => {
-                                    if (!(item in globalList)) {
-                                        globalList.add({item : 1})
-                                    } else {
-                                        var count = globalList[item] + 1
-                                        globalList.add({item : count})
-                                    }
-                                    let tempList = new Set(globalList)
-                                    setGlobalList(tempList)
-                                })
-                            });
-
-                        }}>Get Results</button>
                     </DemoRow>
                 </DemoWrapper>
             </DemoContainer>

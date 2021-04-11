@@ -24,17 +24,13 @@ for (i = 0; i < 40; i++) {
   words.push({text: i, value: i})
 }
 
-class WordCloud extends React.Component {
-    render() {
-        return (
-            <ReactWordcloud
-                callbacks={callbacks}
-                options={options}
-                size={size}
-                words={words}
-            />
-        );
-    }
+export default function WordCloud(props) {
+    return (
+        <ReactWordcloud
+            callbacks={callbacks}
+            options={options}
+            size={size}
+            words={props.words}
+        />
+    );
 }
-
-export default WordCloud
