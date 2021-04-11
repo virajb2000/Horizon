@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/TA/static/css/main.2afb8c05.chunk.css",
+    "main.js": "/TA/static/js/main.ac92b49e.chunk.js",
+    "main.js.map": "/TA/static/js/main.ac92b49e.chunk.js.map",
+    "runtime-main.js": "/TA/static/js/runtime-main.fe17c5ea.js",
+    "runtime-main.js.map": "/TA/static/js/runtime-main.fe17c5ea.js.map",
+    "static/css/2.04607c25.chunk.css": "/TA/static/css/2.04607c25.chunk.css",
+    "static/js/2.80aa376e.chunk.js": "/TA/static/js/2.80aa376e.chunk.js",
+    "static/js/2.80aa376e.chunk.js.map": "/TA/static/js/2.80aa376e.chunk.js.map",
+    "index.html": "/TA/index.html",
+    "static/css/2.04607c25.chunk.css.map": "/TA/static/css/2.04607c25.chunk.css.map",
+    "static/css/main.2afb8c05.chunk.css.map": "/TA/static/css/main.2afb8c05.chunk.css.map",
+    "static/js/2.80aa376e.chunk.js.LICENSE.txt": "/TA/static/js/2.80aa376e.chunk.js.LICENSE.txt",
+    "static/media/architecture.png": "/TA/static/media/architecture.48aa968c.png",
+    "static/media/problem.svg": "/TA/static/media/problem.450a71c7.svg",
+    "static/media/valor_cad_full.png": "/TA/static/media/valor_cad_full.7e8732a8.png",
+    "static/media/video1.2981bea3.mp4": "/TA/static/media/video1.2981bea3.mp4",
+    "static/media/whatis.svg": "/TA/static/media/whatis.39a5b2ea.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fe17c5ea.js",
+    "static/css/2.04607c25.chunk.css",
+    "static/js/2.80aa376e.chunk.js",
+    "static/css/main.2afb8c05.chunk.css",
+    "static/js/main.ac92b49e.chunk.js"
+  ]
+}
