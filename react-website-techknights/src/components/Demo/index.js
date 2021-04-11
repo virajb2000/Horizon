@@ -15,18 +15,17 @@ import {
 
 import useSpeechToText from 'react-hook-speech-to-text';
 
-
 var request = require('request');
 
 //{img_url: 'imageurl 1'}, {img_url: 'imageurl 2'}, {img_url: 'imageurl 3'}, {img_url: 'imageurl 4'}, {img_url: 'imageurl 5'}, {img_url: 'imageurl 6'}, {img_url: 'imageurl 7'}, {img_url: 'imageurl 8'}, {img_url: 'imageurl 9'},{img_url: 'imageurl 10'}, {img_url: 'imageurl 11'}, {img_url: 'imageurl 12'}, {img_url: 'imageurl 13'}, {img_url: 'imageurl 14'},{img_url: 'imageurl 15'},{img_url: 'imageurl 16'}, {img_url: 'imageurl 17'}, {img_url: 'imageurl 18'}, {img_url: 'imageurl 19'}, {img_url: 'imageurl 20'}
 const DemoSection = ({ id, topLine, headline, description, img, alt, nextMember }) => {
     const [imageList, setImageList] = useState([])
+    const [globalList, setGlobalList] = useState(new Set())
 
     useEffect(() => {
         var element = document.getElementById("scroll_list");
         element.scrollTop = element.scrollHeight;
     });
-    // const [wordCloud, setWordCloud] = useState([])
 
     const {
         error,
@@ -76,8 +75,8 @@ const DemoSection = ({ id, topLine, headline, description, img, alt, nextMember 
                                 })}
                             </ScrollList>
                         </Column1>
-                        <Column2>
-                                
+                        <Column2 id="word_cloud">
+                            <p>hi</p>
                         </Column2>
                     </DemoRow>
 
@@ -104,8 +103,19 @@ const DemoSection = ({ id, topLine, headline, description, img, alt, nextMember 
                             request(options, function (error, response) {
                                 if (error) throw new Error(error);
                                 imageList.push(JSON.parse(response.body).image_url)
-                                setImageList(imageList)
-                                
+                                let tempList = imageList.slice()
+                                setImageList(tempList)
+
+                                Array.from(JSON.parse(response.body).word_list).map(item => {
+                                    if (!(item in globalList)) {
+                                        globalList.add({item : 1})
+                                    } else {
+                                        var count = globalList[item] + 1
+                                        globalList.add({item : count})
+                                    }
+                                    let tempList = new Set(globalList)
+                                    setGlobalList(tempList)
+                                })
                             });
 
                         }}>Get Results</button>

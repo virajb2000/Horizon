@@ -7,7 +7,6 @@ import DemoSection from '../components/Demo'
 import { homeObjOne, whatis, hood, future } from '../components/InfoSection/Data'
 import { demo } from '../components/Demo/Data'
 
-
 const Home = () => {
     const[isOpen, setIsOpen] = useState(false)
     
@@ -28,5 +27,4 @@ const Home = () => {
         </>
     )
 }
-
 export default Home

@@ -28,7 +28,7 @@ const Navbar = ({ toggle }) => {
         <>
             <Nav scrollNav={scrollNav}>
                 <NavbarContainer>
-                    <NavLogo to='/'>Placeholder</NavLogo>
+                    <NavLogo to='/'>Horizon</NavLogo>
                     <MobileIcon onClick={toggle}>
                         <FaBars />
                     </MobileIcon>
@@ -37,13 +37,13 @@ const Navbar = ({ toggle }) => {
                             <NavLinks to="problem" smooth={true} duration={500} spy={true} exact='true' offset={-80}>The Problem</NavLinks>
                         </NavItem>
                         <NavItem>
-                            <NavLinks to="whatis" smooth={true} duration={500} spy={true} exact='true' offset={-80}>What is Placeholder</NavLinks>
+                            <NavLinks to="whatis" smooth={true} duration={500} spy={true} exact='true' offset={-80}>What is Horizon</NavLinks>
                         </NavItem>
                         <NavItem>
-                            <NavLinks to="demo" smooth={true} duration={500} spy={true} exact='true' offset={-80}>Placeholder in Action</NavLinks>
+                            <NavLinks to="demo" smooth={true} duration={500} spy={true} exact='true' offset={-80}>Horizon in Action</NavLinks>
                         </NavItem>
                         <NavItem>
-                            <NavLinks to="hood" smooth={true} duration={500} spy={true} exact='true' offset={-80}>Placeholder Under the Hood</NavLinks>
+                            <NavLinks to="hood" smooth={true} duration={500} spy={true} exact='true' offset={-80}>Horizon Under the Hood</NavLinks>
                         </NavItem>
                         <NavItem>
                             <NavLinks to="future" smooth={true} duration={500} spy={true} exact='true' offset={-80}>Future Changes</NavLinks>

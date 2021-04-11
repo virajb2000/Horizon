@@ -27,7 +27,7 @@ const HeroSection = () => {
 
             </HeroBg>
             <HeroContent>
-                <HeroH1>Placeholder</HeroH1>
+                <HeroH1>Horizon</HeroH1>
                 <HeroP>
                     Presented at Bitcamp 2021
                 </HeroP>

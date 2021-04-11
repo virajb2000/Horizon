@@ -20,7 +20,7 @@ export const whatis = {
     lightBg: true,
     lightText: false,
     lightTextDesc: false,
-    topLine: 'What is Placeholder',
+    topLine: 'What is Horizon',
     headline: 'An Innovative Learning Approach',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
     buttonLabel: 'Getting started',
@@ -32,13 +32,13 @@ export const whatis = {
     darkText: true
 }
 
-export const placeholder = {
-    id: 'placeholder',
+export const Horizon = {
+    id: 'Horizon',
     lightBg: false,
     lightText: true,
     lightTextDesc: true,
     topLine: 'Our Product',
-    headline: 'Meet Placeholder',
+    headline: 'Meet Horizon',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     buttonLabel: 'Getting started',
     imgStart: false,
@@ -54,7 +54,7 @@ export const hood = {
     lightBg: false,
     lightText: true,
     lightTextDesc: true,
-    topLine: 'How Placeholder was Implemented',
+    topLine: 'How Horizon was Implemented',
     headline: 'NLP meets Image Processing',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
     buttonLabel: 'Getting started',
