@@ -53,11 +53,7 @@ def sample_analyze_entities():
     print('here')
     # print(request)
     # print(request.get_data())
-    print(request.args)
-    # print(request)
     text_content = request.args['msg']
-    # text_content = 'pizza'
-    print(text_content)
     client = language_v1.LanguageServiceClient()
     type_ = language_v1.Document.Type.PLAIN_TEXT
     language = "en"
@@ -91,7 +87,6 @@ def sample_analyze_entities():
 
             entity_dict[str(entity.name)]['mention_type'] = language_v1.EntityMention.Type(entity.mentions[0].type_).name
  
-    pp.pprint(entity_dict)
     imgLinkToSend = searchBing(max_salience_key)
 
 

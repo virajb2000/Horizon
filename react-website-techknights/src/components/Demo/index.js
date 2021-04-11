@@ -13,7 +13,6 @@ import {
 
 import useSpeechToText from 'react-hook-speech-to-text';
 
-import axios from 'axios';
 
 var request = require('request');
 
@@ -61,13 +60,13 @@ const DemoSection = ({ id, topLine, headline, description, img, alt, nextMember 
                         <Column1>
                         <nav>
                         <ul 
-                        style={{height: '200px', overflow: 'scroll'}}>
-                            {imageList.map(item => {
+                        style={{overflow: 'scroll'}}>
+                            {Array.from(imageList).map(item => {
                             return (
                                 <li
-                                key={item.id}
-                                style={{ height: '25px'}}>
-                                    <div>{item.img_url}</div>
+                                key={item}    
+                                style={{ height: '20px', width: '20px'}}>
+                                    <img src={item}/>
                                 </li>
                             );
                             })}
@@ -89,9 +88,6 @@ const DemoSection = ({ id, topLine, headline, description, img, alt, nextMember 
                     </DemoRow>
                     <DemoRow>
                         <button onClick={() => {
-                            console.log(results[results.length - 1])
-
-
                             var options = {
                                 'method': 'GET',
                                 'url': 'http://127.0.0.1:5000/entity?msg='+results[results.length - 1],
@@ -104,10 +100,10 @@ const DemoSection = ({ id, topLine, headline, description, img, alt, nextMember 
 
                             request(options, function (error, response) {
                                 if (error) throw new Error(error);
-                                // console.log(response.body);
+                                imageList.push(JSON.parse(response.body).image_url)
+                                setImageList(imageList)
                             });
-
-
+                            
                         }}>Get Results</button>
                     </DemoRow>
                 </DemoWrapper>
