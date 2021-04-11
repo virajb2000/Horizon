@@ -15,6 +15,8 @@ import useSpeechToText from 'react-hook-speech-to-text';
 
 import axios from 'axios';
 
+var request = require('request');
+
 //{img_url: 'imageurl 1'}, {img_url: 'imageurl 2'}, {img_url: 'imageurl 3'}, {img_url: 'imageurl 4'}, {img_url: 'imageurl 5'}, {img_url: 'imageurl 6'}, {img_url: 'imageurl 7'}, {img_url: 'imageurl 8'}, {img_url: 'imageurl 9'},{img_url: 'imageurl 10'}, {img_url: 'imageurl 11'}, {img_url: 'imageurl 12'}, {img_url: 'imageurl 13'}, {img_url: 'imageurl 14'},{img_url: 'imageurl 15'},{img_url: 'imageurl 16'}, {img_url: 'imageurl 17'}, {img_url: 'imageurl 18'}, {img_url: 'imageurl 19'}, {img_url: 'imageurl 20'}
 const DemoSection = ({ id, topLine, headline, description, img, alt, nextMember }) => {
     const [imageList, setImageList] = useState([])
@@ -87,24 +89,25 @@ const DemoSection = ({ id, topLine, headline, description, img, alt, nextMember 
                     </DemoRow>
                     <DemoRow>
                         <button onClick={() => {
-                            var speech = JSON.stringify({ "msg": results[results.length - 1] });
-                            console.log(speech)
-                            var config = {
-                            method: 'get',
-                            url: 'http://127.0.0.1:5000/entity',
-                            headers: { 
-                                'Content-Type': 'application/json'
-                            },
-                            data : speech
+                            console.log(results[results.length - 1])
+
+
+                            var options = {
+                                'method': 'GET',
+                                'url': 'http://127.0.0.1:5000/entity?msg=computer',
+                                'headers': {
+                                  'Content-Type': 'application/json',
+                                  'Access-Control-Allow-Origin': '*'
+                                },
+                                // body: JSON.stringify({"msg":"computer science is one of the most fascinating areas of study in the twenty first century"})
+                              
                             };
 
-                            axios(config)
-                            .then(function (response) {
-                                setImageList(imageList.push(response.data.image_url))
-                            })
-                            .catch(function (error) {
-                                console.log(error);
+                            request(options, function (error, response) {
+                                if (error) throw new Error(error);
+                                // console.log(response.body);
                             });
+
 
                         }}>Get Results</button>
                     </DemoRow>
