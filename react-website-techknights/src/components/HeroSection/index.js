@@ -32,8 +32,8 @@ const HeroSection = () => {
                     Presented at Bitcamp 2021
                 </HeroP>
                 <HeroBtnWrapper>
-                    <Button to="about" onMouseEnter={onHover} onMouseLeave={onHover} primary='true' dark='true' smooth={true} duration={500} spy={true} exact='true' offset={-80}>
-                        Get started {hover ? <ArrowForward/> : <ArrowRight/>}
+                    <Button to="problem" onMouseEnter={onHover} onMouseLeave={onHover} primary='true' dark='true' smooth={true} duration={500} spy={true} exact='true' offset={-80}>
+                        Learn More {hover ? <ArrowForward/> : <ArrowRight/>}
                     </Button>
                 </HeroBtnWrapper>
             </HeroContent>

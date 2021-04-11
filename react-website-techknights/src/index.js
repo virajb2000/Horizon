@@ -17,4 +17,4 @@ function updateScroll() {
   }
 }
 
-setInterval(updateScroll, 10);
+setInterval(updateScroll, 100);
