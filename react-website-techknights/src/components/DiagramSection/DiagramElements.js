@@ -1,9 +1,13 @@
 import styled from 'styled-components'
 import {MdPlusOne} from 'react-icons/md';
+import diagram from "../../images/architecture.png";
 
 
 export const InfoContainer = styled.div`
-    background-image: url("../../images/architecture.png");
+    background-image: url(${diagram});
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: 95% 95%;
 `
 
 export const InfoWrapper = styled.div`

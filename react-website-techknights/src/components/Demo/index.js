@@ -55,7 +55,7 @@ const DemoSection = ({ id, topLine, headline, description, img, alt, nextMember 
             if (results.length > 0) {
                 var options = {
                     'method': 'GET',
-                    'url': 'https://1cfea706b2ba.ngrok.io/entity?msg=' + results[results.length - 1],
+                    'url': 'https://oya2ebjgg1.execute-api.us-east-1.amazonaws.com/Prod/hello?msg=' + results[results.length - 1],
                     'headers': {
                         'Content-Type': 'application/json',
                         'Access-Control-Allow-Origin': '*'
@@ -66,11 +66,11 @@ const DemoSection = ({ id, topLine, headline, description, img, alt, nextMember 
                 try {
                     request(options, function (error, response) {
                         if (error) throw new Error(error);
-                        imageList.push(JSON.parse(response.body).image_url)
+                        imageList.push(JSON.parse(response.body).message.image_url)
                         let tempList = imageList.slice()
                         setImageList(tempList)
 
-                        Array.from(JSON.parse(response.body).word_list).map(item => {
+                        Array.from(JSON.parse(response.body).message.word_list).map(item => {
                             globalList.push({text: item, value: 1})
                             let tempList = globalList.slice()
                             setGlobalList(tempList)
